@@ -97,7 +97,7 @@ def make_folder_dataset(
         """
         if isinstance(path, Sequence) and not isinstance(path, str):
             return [validate_and_resolve_path(dir_path, root) for dir_path in path]
-        return [validate_and_resolve_path(path, root)] if path is not None else []
+        return [validate_and_resolve_path(path, root, root)] if path is not None else []
 
     # All paths are changed to the List[Path] type and used.
     normal_dir = _resolve_path_and_convert_to_list(normal_dir)

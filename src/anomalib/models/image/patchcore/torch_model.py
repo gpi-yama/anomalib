@@ -149,6 +149,9 @@ class PatchcoreModel(DynamicBufferModule, nn.Module):
             sampling_ratio (float): Coreset sampling ratio
         """
         # Coreset Subsampling
+        if sampling_ratio == 1.0:
+            self.memory_bank = embedding
+            return
         sampler = KCenterGreedy(embedding=embedding, sampling_ratio=sampling_ratio)
         coreset = sampler.sample_coreset()
         self.memory_bank = coreset
